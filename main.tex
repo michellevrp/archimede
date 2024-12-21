@@ -1,0 +1,180 @@
+\documentclass[12pt, a4paper, twoside]{article}
+% 12pt: Dimensione del carattere principale.
+% a4paper: Dimensione del documento.
+% twoside: Impostazione per documenti a due facciate (faccina e retro).
+
+% Pacchetti fondamentali
+
+% Questo pacchetto consente di utilizzare caratteri speciali e lettere accentate direttamente nel tuo documento LaTeX scrivendo in formato UTF-8. È essenziale per la corretta visualizzazione dei caratteri non standard.
+\usepackage[utf8]{inputenc}
+
+% Questo pacchetto migliora la resa tipografica dei caratteri, specialmente quelli accentati e speciali, impostando l'encoding dei font a T1. È utile per evitare problemi di visualizzazione e per una migliore qualità della stampa.
+\usepackage[T1]{fontenc}
+
+% Adatta automaticamente il documento alle convenzioni linguistiche e tipografiche della lingua specificata (in questo caso, l'italiano). Gestisce correttamente la sillabazione, i nomi dei capitoli, le intestazioni e altre impostazioni linguistiche.
+\usepackage[italian]{babel}
+
+% Impostazione delle dimensioni dei margini
+\usepackage[
+    a4paper,
+    top=2.5cm,
+    bottom=2.5cm,   % Superiore e inferiore: 2.5 cm
+    inner=2.5cm,    % Sinistro: 2 cm margine + 0.5 cm rilegatura
+    outer=2cm,      % Destro (outer): 2 cm
+    bindingoffset=0.5cm
+]{geometry}
+
+
+% Impostazione dell'interlinea
+\usepackage{setspace}
+\setstretch{1.15}
+
+% Indentazione della prima riga di ogni paragrafo
+\usepackage{indentfirst}
+
+% Pacchetti per elementi aggiuntivi
+\usepackage{graphicx}   % per inserire immagini, grafici e figure
+\usepackage{hyperref}   % per collegamenti ipertestuali 
+\usepackage{amsmath}    % per la scrittura di formule matematiche
+\usepackage{booktabs}    % Per tabelle senza linee verticali e doppi
+\usepackage{multirow}    % Per celle multicolonna
+\usepackage{makeidx}     % Per l'indice
+\usepackage{caption}     % Per la formattazione delle didascalie
+
+% Creazione dell'indice
+\makeindex
+
+% Formattazione del titolo e dell'autore
+
+% questo importa il pacchetto titling nel tuo documento, permettendoti di utilizzare i comandi \pretitle, \posttitle, \preauthor, e \postauthor per personalizzare la formattazione del titolo e dell'autore.
+\usepackage{titling}
+
+% \pretitle{...}: Questo comando definisce il contenuto o la formattazione che precede il titolo quando viene eseguito \maketitle.
+% Il titolo è centrato, in corsivo e grandezza \LARGE.
+\pretitle{\centering\itshape\LARGE}  
+
+% \posttitle{...}: Questo comando definisce il contenuto o la formattazione che segue il titolo dopo \maketitle.
+% \par Assicura che dopo il titolo ci sia uno spazio \vspace adeguato prima del testo successivo.
+\posttitle{\par\vspace{0.5cm}}
+
+% \preauthor{...}: Questo comando definisce il contenuto o la formattazione che precede l'autore quando viene eseguito \maketitle.
+% Il nome dell'autore sarà visualizzato in maiuscoletto.
+\preauthor{\centering\scshape\large}
+
+% \postauthor{...}: Questo comando definisce il contenuto o la formattazione che segue l'autore dopo \maketitle.
+\postauthor{\par\vspace{1cm}}
+
+% Definisce il titolo
+\title{Titolo della Lezione di \textit{Storia dell'Arte}}
+% Definisce l'autore
+\author{NOME DELL'AUTORE}
+
+% Inizia il documento
+\begin{document}
+
+% Genera il titolo
+\maketitle
+
+% Va alla pagina nuova
+\newpage
+
+% Crea una sezione (Un capitolo)
+\section{Introduzione}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.\footnote{Esempio di nota a piè di pagina.} Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+\section{Sezione Principale}
+% \cite{fonte} genera un link al riferimento bibliografico. tra parentesi deve esserci lo stesso label che hai assegnato a \bibitem{fonte} nella bibliografia.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. \cite{opera1} Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\footnote{Seconda nota a piè di pagina.}
+
+% Genera una sottosezione (Un paragrafo)
+\subsection{Sottosezione}
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\footnote{Terza nota a piè di pagina.} 
+% Genera una sottosottosezione (Una sezione del paragrafo)
+\subsubsection{Sottosottosezione}
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% Genera un elenco
+% Usa \item[$\square$] per avere i quadrati
+% Usa \item[] per non avere nessun simbolo
+\begin{itemize}
+    \item Primo elemento della lista % Genera un punto della lista
+    \item Secondo elemento della lista
+    \item Terzo elemento della lista
+\end{itemize}
+
+\begin{table}[ht] % Inizio dell'ambiente "table" con opzioni di posizionamento
+% Suggerisce a LaTeX di posizionare la tabella here (nel punto corrente) o top (in alto nella pagina). Le opzioni possono includere anche b (bottom), p (pagina dedicata alle tabelle), ecc.
+    \centering % Centra la tabella all'interno della pagina
+    \caption{Esempio di Tabella} % Didascalia della tabella
+    \begin{tabular}{llcc} % Inizio dell'ambiente "tabular" con quattro colonne: due allineate a sinistra (l) e due centrate (c)
+        \toprule % Linea orizzontale superiore (fornita dal pacchetto booktabs)
+        \multicolumn{2}{c}{Categoria} & \multicolumn{2}{c}{Valori} \\ % Celle che uniscono due colonne ciascuna con intestazioni centrate
+        
+        % Linee orizzontali parziali sotto le intestazioni
+        % \cmidrule(lr){start-end}: Disegna una linea che inizia alla colonna start e finisce alla colonna end.
+        % lr: Specifica che le estremità della linea devono essere leggermente abbassate e rialzate per evitare sovrapposizioni con il testo.
+        \cmidrule(lr){1-2} \cmidrule(lr){3-4} 
+        
+        Sottocategoria & Descrizione & Quantità (kg) & Prezzo (€) \\ % Intestazioni delle colonne
+        \midrule % Linea orizzontale centrale (fornita dal pacchetto booktabs)
+
+        % Utilizza & per separare il contenuto di ciascuna colonna.
+        % Utilizza \\ per terminare la riga.
+        A & Descrizione A & 10.50 & 20.00 \\ % Riga di dati
+        B & Descrizione B & 5.75 & 15.50 \\ % Riga di dati
+        C & Descrizione C & 12.00 & 30.25 \\ % Riga di dati
+        
+        \bottomrule % Linea orizzontale inferiore (fornita dal pacchetto booktabs)
+    \end{tabular} % Fine dell'ambiente "tabular"
+    % Etichetta per riferimenti incrociati
+    % Permette di fare riferimento alla tabella nel testo utilizzando \ref{tab:esempio}.
+    \label{tab:esempio} 
+\end{table} % Fine dell'ambiente "table"
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. \cite{opera2} Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \cite{opera3}
+
+% Creazione di immagini.
+% \begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.5\textwidth]{path_immagine}
+%    \caption{Descrizione dell'immagine}
+%    \label{fig:esempio}
+% \end{figure}
+
+
+\section{Conclusioni}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. 
+
+\newpage
+
+% Crea una sezione non numerata nel documento
+\section*{Riferimenti Bibliografici}
+
+% Il comando \addcontentsline serve per aggiungere manualmente una voce a uno dei file di contenuto (come l'indice dei contenuti, la lista delle figure, la lista delle tabelle, ecc.) di un documento LaTeX.
+% \addcontentsline{file}{unità}{titolo}
+% file: Specifica a quale file di contenuto aggiungere la voce. I file comuni includono:
+% toc: Table of Contents (Indice dei Contenuti)
+% lof: List of Figures (Lista delle Figure)
+% lot: List of Tables (Lista delle Tabelle)
+% unità: Definisce il livello gerarchico della voce all'interno del file di contenuto. Per noi i riferimenti bibliografici sono una section.
+% titolo: È il testo che apparirà nell'indice. Deve essere inserito tra parentesi graffe {}.
+\addcontentsline{toc}{section}{Riferimenti Bibliografici}
+\begin{thebibliography}{9}
+
+\bibitem{opera1}
+Autore A. \textit{Titolo dell'Opera 1}. Casa Editrice, Anno.
+
+\bibitem{opera2}
+Autore B. \textit{Titolo dell'Opera 2}. Casa Editrice, Anno.
+
+\bibitem{opera3}
+Autore C. \textit{Titolo dell'Opera 3}. Casa Editrice, Anno.
+
+\end{thebibliography}
+
+\newpage
+
+% Genera l'indice dei contenuti, che include anche i riferimenti bibliografici.
+\tableofcontents
+
+\end{document}
